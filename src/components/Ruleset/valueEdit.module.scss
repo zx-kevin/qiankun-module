@@ -1,0 +1,30 @@
+.vlaue-edit-component {
+  width: 250px;
+  display: flex;
+  border: 1px solid #dcdfe6;
+  border-radius: 4px;
+  overflow: hidden;
+
+  .option {
+    width: 75px;
+    border-right: 1px solid #dcdfe6;
+
+    :global {
+      .el-input__wrapper {
+        box-shadow: none !important;
+        height: 35px;
+      }
+    }
+  }
+
+  .value {
+    flex: 1;
+
+    :global {
+      .el-input__wrapper {
+        box-shadow: none !important;
+        height: 35px;
+      }
+    }
+  }
+}

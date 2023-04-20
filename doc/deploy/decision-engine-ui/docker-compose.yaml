@@ -1,0 +1,24 @@
+version: '2'
+services:
+  java:
+    image: nginx:1.16
+    container_name: decision-engine-ui
+    restart: always
+    volumes:
+      - ./data/html:/data/html
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    ulimits:
+      nproc: 65535
+      nofile:
+        soft: 20000
+        hard: 40000
+    environment:
+      TZ: Asia/Shanghai
+    working_dir: /data
+    networks:
+      default_net:
+        
+networks:
+  default_net:
+    external: true
+

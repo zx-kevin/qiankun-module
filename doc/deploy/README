@@ -1,0 +1,9 @@
+部署前端，请执行
+bash deploy_ui.sh
+
+如需配置访问，需要先部署后端和前端
+配置域名：
+编辑deploy_domian.sh文件，DOMAIN=域名，WSS_DOMAIN=wss域名
+执行
+bash deploy_domian.sh
+

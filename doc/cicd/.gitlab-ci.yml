@@ -1,0 +1,45 @@
+stages:
+  - 编译打包
+  - 项目部署
+
+variables:
+  #前端容器镜像
+  BASE_IMAGE: "nginx:1.16"
+  #后端容器名，目前设定为后端仓库名
+  PROJECT_API: "decision_engine"
+  #域名 
+  DOMAIN_NAME: "dev-decision-engine.jeoho.com"
+  
+编译部署_dev:
+  stage: 编译打包
+  tags: 
+    - vm-jeoho-14 
+  only:
+    - dev
+  when: always
+  script:
+    #检测项目运行目录是否存在，目录不存在则退出
+    - test -d /data/compose/$CI_PROJECT_NAME || ( echo "请联系运维配置运行目录" && exit 1 )
+    #编译，并复制前端页面文件
+    - yarn --registry=https://registry.npmmirror.com
+    - yarn build:prod
+    - sudo cp -rf dist/* /data/compose/$CI_PROJECT_NAME/data/html/
+    #- cd /data/compose/$CI_PROJECT_NAME && docker-compose down && docker-compose up -d
+
+编译部署_test:
+  stage: 编译打包
+  tags: 
+    - vm-jeoho-14 
+  only:
+    - dev
+  when: manual
+  script:
+    #检测项目运行目录是否存在，目录不存在则退出
+    - test -d /data/compose/decision_engine_ui_test || ( echo "请联系运维配置运行目录" && exit 1 )
+    #编译，并复制前端页面文件
+    - yarn --registry=https://registry.npmmirror.com
+    - yarn build:prod
+    - sudo cp -rf dist/* /data/compose/decision_engine_ui_test/data/html/
+    #- cd /data/compose/decision_engine_ui_test/ && docker-compose down && docker-compose up -d
+
+
