@@ -1,8 +1,5 @@
 export default {
-  // default: '92',
+  // default: 'http://test-system.com',
 
-  decision: '92',
-  // system: '92',
-  // 'feature-lib': '92',
-  // flow: '92',
+  system: 'http://test-system.com',
 }

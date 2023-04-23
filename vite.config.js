@@ -1,9 +1,9 @@
 /*
  * @Author: 杰 xuyongfeng@jeoho.com
  * @Date: 2023-02-01 15:01:35
- * @LastEditors: yangxiong yangxiong@jeoho.com
- * @LastEditTime: 2023-03-24 19:12:35
- * @FilePath: \decision_engine_ui\vite.config.js
+ * @LastEditors: K
+ * @LastEditTime: 2023-04-23 11:09:51
+ * @FilePath: \demo-ui\vite.config.js
  * @Description:
  *
  * Copyright (c) 2023 by ${git_name_email}, All Rights Reserved.
@@ -15,12 +15,12 @@ import createVitePlugins from './vite/plugins';
 // https://vitejs.dev/config/
 export default defineConfig(({ mode, command }) => {
   const env = loadEnv(mode, process.cwd());
-  const { VITE_APP_ENV } = env;
+  const { VITE_APP_ENV, VITE_BASE_URL } = env;
   return {
     // 部署生产环境和开发环境下的URL。
     // 默认情况下，vite 会假设你的应用是被部署在一个域名的根路径上
-    // 例如 https://www.jeoho.com/。如果应用被部署在一个子路径上，你就需要用这个选项指定这个子路径。例如，如果你的应用被部署在 https://www.ruoyi.vip/admin/，则设置 baseUrl 为 /admin/。
-    base: VITE_APP_ENV === 'production' ? '/' : '/',
+    // 例如 https://www.jeoho.com/。则设置 baseUrl 为 https://www.jeoho.com/。
+    base: VITE_APP_ENV === 'production' ? VITE_BASE_URL || '/' : '/',
     plugins: createVitePlugins(env, command === 'build'),
     resolve: {
       // https://cn.vitejs.dev/config/#resolve-alias

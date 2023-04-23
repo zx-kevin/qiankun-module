@@ -57,12 +57,12 @@ function routerHandler(routes = []) {
     }
 
     const pathStr = path.split('/').find(str => str)
-    const host = hosts[pathStr] || hosts.default
+    const host = hosts[pathStr] || hosts.default || window.location.protocol + '//' + window.location.host
 
     if (host) {
       result.push({
         name: pathStr,
-        entry: `//localhost:${host}/${pathStr}`,
+        entry: `${host}/${pathStr}`,
         container: '#sub-container',
         activeRule: `/${pathStr}`,
       })
