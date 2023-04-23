@@ -66,6 +66,7 @@ function filterAsyncRouter(asyncRouterMap, lastRouter = false, type = false) {
     if (type && route.children) {
       route.children = filterChildren(route.children);
     }
+    const needPortal = hostKeys.includes(route.path.split('/').filter(str => str)[0])
     if (route.component) {
       // Layout ParentView 组件特殊处理
       if (route.component === 'Layout') {
@@ -76,8 +77,8 @@ function filterAsyncRouter(asyncRouterMap, lastRouter = false, type = false) {
         route.component = InnerLink;
       } else {
         //  微应用页面处理  hosts 配置优先
-        const view = loadView(route.component);
-        route.component = qiankunWindow.__POWERED_BY_QIANKUN__ ? view : hostKeys.includes(route.path) ? PortalView : hosts.default ? PortalView : view;
+        const view = loadView(route.component) || PortalView;
+        route.component = qiankunWindow.__POWERED_BY_QIANKUN__ ? view : needPortal ? PortalView : view;
       }
     }
     if (route.children != null && route.children && route.children.length) {

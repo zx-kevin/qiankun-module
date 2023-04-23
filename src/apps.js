@@ -8,7 +8,7 @@ import {
 import { watch } from 'vue'
 
 import router from '@/router'
-import hosts from '@/hosts'
+import { getHost } from '@/hosts'
 import actions from '@/actions'
 
 const initState = {
@@ -57,7 +57,7 @@ function routerHandler(routes = []) {
     }
 
     const pathStr = path.split('/').find(str => str)
-    const host = hosts[pathStr] || hosts.default || window.location.protocol + '//' + window.location.host
+    const host = getHost(pathStr)
 
     if (host) {
       result.push({

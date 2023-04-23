@@ -13,7 +13,7 @@ import useAppStore from '@/store/modules/app.js';
 import { getDomainApi } from '@/api/module/chat/im/chatGroup.js';
 
 import { qiankunWindow } from 'vite-plugin-qiankun/dist/helper'
-import hosts from '@/hosts'
+import hosts, { getHost } from '@/hosts'
 
 NProgress.configure({ showSpinner: false });
 
@@ -37,7 +37,7 @@ router.beforeEach((to, from, next) => {
             // 根据roles权限生成可访问的路由表
             accessRoutes.forEach(route => {
               //  路由通配调整
-              if (qiankunWindow.__POWERED_BY_QIANKUN__) handlePathMatch(route)
+              if (!qiankunWindow.__POWERED_BY_QIANKUN__) handlePathMatch(route)
               if (!isHttp(route.path)) {
                 router.addRoute(route) // 动态添加可访问路由表
               }
@@ -78,7 +78,7 @@ router.afterEach(() => {
 const hostKeys = Object.keys(hosts)
 const handlePathMatch = (route) => {
   const { path, children } = route
-  if (path !== '/' && !hostKeys.includes(pathSplit(path)) || !(children || []).filter(child => hostKeys.includes(pathSplit(child.path))).length) return
+  if (path !== '/' && !hostKeys.includes(pathSplit(path)) || path === '/' && !(children || []).filter(child => hostKeys.includes(pathSplit(child.path))).length) return
 
   const targetChildren = (children || []).filter(child => path == '/' ? hostKeys.includes(pathSplit(child.path)) : true)
   for (const item of targetChildren) {
