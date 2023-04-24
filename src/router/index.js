@@ -6,8 +6,6 @@ import Layout from '@/layout';
 /* 系统模块路由 */
 import system from './module/system';
 
-import decision from './module/decision';
-
 /**
  * Note: 路由配置项
  *
@@ -76,26 +74,11 @@ export const constantRoutes = [
       },
     ],
   },
-  {
-    path: '/user',
-    component: Layout,
-    hidden: true,
-    redirect: 'noredirect',
-    children: [
-      {
-        path: 'profile',
-        component: () => import('@/views/module/system/user/profile/index'),
-        name: 'Profile',
-        meta: { title: '个人中心', icon: 'user' },
-      },
-    ],
-  },
 ];
 
 // 动态路由，基于用户权限动态去加载
 export const dynamicRoutes = [
   ...system,
-  ...decision,
 ];
 
 const router = createRouter({
