@@ -10,12 +10,20 @@ import createSetupExtend from './setup-extend';
 import basicSsl from '@vitejs/plugin-basic-ssl'
 
 import qiankun from 'vite-plugin-qiankun'
+import compresssionBuild from "rollup-plugin-compression";
+import { name } from "../../package.json";
 
 export default function createVitePlugins(viteEnv, isBuild = false) {
   const vitePlugins = [vue(), vueJsx(),
-  qiankun('decision', {
+  qiankun(name, {
     useDevMode: true
-  })];
+  }),
+  ];
+  isBuild && vitePlugins.push(compresssionBuild({
+    sourceName: `dist`,
+    type: "zip",
+    targetName: name
+  })) //  打包自动压缩zip文件
   vitePlugins.push(createAutoImport());
   vitePlugins.push(createSetupExtend());
   !isBuild && vitePlugins.push(basicSsl());

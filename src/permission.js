@@ -13,7 +13,7 @@ import useAppStore from '@/store/modules/app.js';
 import { getDomainApi } from '@/api/module/chat/im/chatGroup.js';
 
 import { qiankunWindow } from 'vite-plugin-qiankun/dist/helper'
-import hosts, { getHost } from '@/hosts'
+import hosts from '@/hosts'
 
 NProgress.configure({ showSpinner: false });
 

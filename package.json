@@ -1,8 +1,8 @@
 {
-  "name": "decision",
-  "version": "3.8.4",
-  "description": "决策引擎",
-  "author": "联邦学习",
+  "name": "demo-ui",
+  "version": "0.0.0",
+  "description": "qiankun 微应用 模板",
+  "author": "K",
   "license": "MIT",
   "scripts": {
     "dev": "vite",
@@ -70,6 +70,7 @@
     "eslint-plugin-vue": "^9.9.0",
     "patch-package": "^6.5.1",
     "prettier": "^2.8.3",
+    "rollup-plugin-compression": "^1.0.2",
     "sass": "1.52.1",
     "unplugin-auto-import": "0.8.5",
     "vite": "^4.0.0",

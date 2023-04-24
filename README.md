@@ -31,16 +31,12 @@ npm run dev
 ## 项目配置
 
 ```javascript
-//  vite\plugins\index.js
+// package.json
 
-// 添加 vitePlugins 配置
-import qiankun from 'vite-plugin-qiankun'
-const vitePlugins = [vue(), vueJsx(),
 // 这里的 'myMicroAppName' 是子应用名，主应用注册时AppName需保持一致
 // 因为我们由路由区分应用，所以这里应该是路由前缀
-qiankun('myMicroAppName', {
-  useDevMode: true
-})];
+
+  "name": "myMicroAppName",
 ```
 
 ```javascript
@@ -86,7 +82,10 @@ base: VITE_APP_ENV === 'production' ? VITE_BASE_URL || '/' : '/', //  打包路�
 // is enforced for module scripts per HTML spec.
 
 // .env.production
-VITE_BASE_URL = 'https://www.jeoho.com/'
+//  子应用需要在路径添加对应路由 如：
+//  https://www.jeoho.com/syste
+
+VITE_BASE_URL = 'https://www.jeoho.com/' 
 
 
 ```
