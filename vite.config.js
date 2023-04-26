@@ -72,6 +72,12 @@ export default defineConfig(({ mode, command }) => {
               },
             },
           },
+          //  样式隔离 自定义命名空间 与 index.html 类名对应
+          require('postcss-plugin-namespace')('.qiankun-demo', {
+            ignore: [
+              'html', 'body', /^.el-/, ':root', /^\*/, 'label', 'button', 'input', 'select', 'textarea',
+            ]
+          }),
         ],
       },
       preprocessorOptions: {
