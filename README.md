@@ -1,10 +1,10 @@
-## 平台简介
+# 平台简介
 
 * 本仓库为前端技术栈 [Vue3](https://v3.cn.vuejs.org) + [Element Plus](https://element-plus.org/zh-CN) + [Vite](https://cn.vitejs.dev) + [Qiankun](https://qiankun.umijs.org/) 版本。
 
 <br>
 
-## 前端运行
+# 前端运行
 
 ```bash
 # 克隆项目
@@ -28,7 +28,10 @@ npm run dev
 
 <br>
 
-## 项目配置
+# 项目配置
+
+
+## 项目名称
 
 ```javascript
 // package.json
@@ -38,6 +41,8 @@ npm run dev
 
   "name": "myMicroAppName",
 ```
+
+## 域名配置
 
 ```javascript
 // src\hosts.js
@@ -57,8 +62,9 @@ export default {
 }
 ```
 
+## 全局通信
+
 ```javascript
-//  全局通信
 //  微应用中只能修改已存在的一级属性
 
 //  主应用 src\actions.js -> Actions.initialStore 定义全局一级属性
@@ -69,6 +75,8 @@ actions.onGlobalStateChange((state, prev) => {
   console.log('onGlobalStateChange', state, prev);
 })
 ```
+
+## 打包配置
 
 ```javascript
 //  vite.config.js
@@ -86,6 +94,25 @@ base: VITE_APP_ENV === 'production' ? VITE_BASE_URL || '/' : '/', //  打包路�
 //  https://www.jeoho.com/syste
 
 VITE_BASE_URL = 'https://www.jeoho.com/' 
+```
 
+## 样式隔离
 
+```javascript
+// vite.config.js
+
+ //  样式隔离 自定义命名空间 与 index.html 类名对应
+require('postcss-plugin-namespace')('.qiankun-demo', {
+  ignore: [
+    'html', 'body', /^.el-/, ':root', /^\*/, 'label', 'button', 'input', 'select', 'textarea',
+  ]
+}),
+```
+
+```html
+<!-- index.html -->
+
+<div class="qiankun-demo">
+
+</div>
 ```
