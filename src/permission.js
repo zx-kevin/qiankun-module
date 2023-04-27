@@ -117,9 +117,9 @@ const handlePathMatch = (route, url = '') => {
   if (!qiankunWindow.__POWERED_BY_QIANKUN__) {
     //  父应用根据 hosts 配置 调整对应路由指向 pathMatch(.*)*
     const isHost =
-      (path !== '/' && !hostKeys.includes(pathSplit(path))) ||
+      (path !== '/' && hostKeys.includes(pathSplit(path))) ||
       (path === '/' &&
-        !(children || []).filter((child) => hostKeys.includes(pathSplit(child.path))).length); //  判断匹配 hosts 配置
+        (children || []).filter((child) => hostKeys.includes(pathSplit(child.path))).length); //  判断匹配 hosts 配置
     const targetChildren = (children || []).filter((child) =>
       path == '/' ? hostKeys.includes(pathSplit(child.path)) : true,
     );
