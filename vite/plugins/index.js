@@ -1,5 +1,6 @@
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
+import VueSetupExtend from 'vite-plugin-vue-setup-extend'
 
 import createAutoImport from './auto-import';
 import createSvgIcon from './svg-icon';
@@ -14,7 +15,7 @@ import compresssionBuild from "rollup-plugin-compression";
 import { name } from "../../package.json";
 
 export default function createVitePlugins(viteEnv, isBuild = false) {
-  const vitePlugins = [vue(), vueJsx(),
+  const vitePlugins = [vue(), vueJsx(), VueSetupExtend(),
   qiankun(name, {
     useDevMode: true
   }),
