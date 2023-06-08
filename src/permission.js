@@ -127,6 +127,9 @@ const handlePathMatch = (route, url = '') => {
       path == '/' ? hostKeys.includes(pathSplit(child.path)) : true,
     );
     for (const item of targetChildren) {
+      if (!item.children) item.children = [];
+      item.props = true;
+      if (!isHost) item.children.push({ path: '/:pathMatch(.*)*', redirect: { name: item.name } });
       item.path = isHost
         ? item.path + `${item.path.slice(-1) !== '/' ? '/' : ''}` + ':pathMatch(.*)*'
         : item.path;
@@ -140,7 +143,7 @@ const handlePathMatch = (route, url = '') => {
         result.push(...handlePathMatch(child, urlSplit(url + '/' + path)));
       }
     } else {
-      result.push({ ...route, path: urlSplit(url + '/' + path) });
+      result.push({ ...route, path: urlSplit(url + '/' + path), props: true });
     }
   }
 
