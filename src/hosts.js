@@ -3,8 +3,7 @@ const env = process.env.NODE_ENV
 const map = {
   // default: 'http://test-system.com',
 
-  system: 'https://localhost:93',
-  // system: 'http://test-system.com',
+  system: 'https://cross-dev.jeoho.com',  //  系统模块
 }
 
 export function getHost(key = 'default') {

@@ -1,6 +1,4 @@
 <script>
-import { start } from 'qiankun';
-
 export default defineComponent({
   name: 'PortalView',
   render() {

@@ -1,14 +1,14 @@
 <template>
   <section class="app-main">
-    <router-view>
-      <div id="sub-container"></div>
-    </router-view>
     <router-view v-slot="{ Component, route }" :key="key">
       <transition name="fade-transform" mode="out-in">
         <keep-alive :include="tagsViewStore.cachedViews">
           <component v-if="!route.meta.link" :is="Component" :key="route.path" />
         </keep-alive>
       </transition>
+    </router-view>
+    <router-view>
+      <div id="sub-container"></div>
     </router-view>
     <iframe-toggle />
   </section>
