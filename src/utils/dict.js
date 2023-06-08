@@ -1,5 +1,5 @@
 import useDictStore from '@/store/modules/dict';
-import { getDicts } from '@/api/module/system/dict/data';
+import { getDicts } from '@/api/common/dict/data';
 
 /**
  * 获取字典数据

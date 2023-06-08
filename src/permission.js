@@ -10,7 +10,6 @@ import useSettingsStore from '@/store/modules/settings';
 import usePermissionStore from '@/store/modules/permission';
 
 import useAppStore from '@/store/modules/app.js';
-import { getDomainApi } from '@/api/module/chat/im/chatGroup.js';
 
 import PortalView from '@/layout/portalView';
 import { qiankunWindow } from 'vite-plugin-qiankun/dist/helper';

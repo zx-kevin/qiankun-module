@@ -1,4 +1,4 @@
-import { login, logout, getInfo, getFileDomainApi } from '@/api/login';
+import { login, logout, getInfo, getFileDomainApi } from '@/api/common/login';
 import { getToken, setToken, removeToken } from '@/utils/auth';
 import defAva from '@/assets/images/profile.png';
 import defaultAvatar from '@/assets/images/chat/detault-avatar.jpg';

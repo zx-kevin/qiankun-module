@@ -1,6 +1,6 @@
 import auth from '@/plugins/auth';
 import router, { constantRoutes, dynamicRoutes } from '@/router';
-import { getRouters } from '@/api/menu';
+import { getRouters } from '@/api/common/menu';
 import Layout from '@/layout/index';
 import PortalView from '@/layout/portalView';
 import ParentView from '@/components/ParentView';

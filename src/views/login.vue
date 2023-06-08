@@ -73,7 +73,7 @@
 </template>
 
 <script setup>
-import { getCodeImg } from '@/api/login';
+import { getCodeImg } from '@/api/common/login';
 import Cookies from 'js-cookie';
 import { encrypt, decrypt } from '@/utils/jsencrypt';
 import useUserStore from '@/store/modules/user';
